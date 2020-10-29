@@ -21,7 +21,10 @@ public class InvoiceTest {
         Ride[] ride = {new Ride(3.5, 10),
                         new Ride(0.3,1),
                         new Ride(3,2)};
-        Assert.assertEquals(82,calculateFare.getTotalFare(ride),0);
+        //Assert.assertEquals(82,calculateFare.getTotalFare(ride),0);
 
+        InvoiceSummary expectedinvoiceSummary = new InvoiceSummary(3,82);
+        InvoiceSummary actualinvoiceSummary = calculateFare.getTotalFare(ride);
+        Assert.assertEquals(expectedinvoiceSummary, actualinvoiceSummary);
     }
 }

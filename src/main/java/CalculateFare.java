@@ -8,11 +8,11 @@ public class CalculateFare{
         return (dist * COST_PERKM + time * COST_PERUNITTIME) < 5 ? 5 : dist * COST_PERKM + time * COST_PERUNITTIME;
     }
 
-    public double getTotalFare(Ride[] ride) {
+    public InvoiceSummary getTotalFare(Ride[] ride) {
         double sum = 0;
         for(Ride r : ride){
             sum = sum + this.getTotalFare(r.getDist(), r.getTime());
         }
-        return sum;
+        return new InvoiceSummary(ride.length, sum);
     }
 }
